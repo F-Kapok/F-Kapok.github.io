@@ -3,7 +3,415 @@
   <entry>
     <title>WELCOME</title>
     <url>/posts/88e9fa9.html</url>
-    <content><![CDATA[<p><img data-src="/images/timg.jpg" alt=""><br>&emsp;&emsp;Cream-K的个人网站,主要分享程序技术相关内容，欢迎交流。<br><a id="more"></a></p>
+    <content><![CDATA[
+<script src="https://cdn.jsdelivr.net/npm/jquery@2.1.3/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap.min.js@3.3.5/bootstrap.min.js"></script>
+<style type="text/css">
+  .glyphicon-chevron-left:before{
+	/* content: "《"; */
+}
+.glyphicon-chevron-right:before{
+	/* content: "》"; */
+}
+.right-siders{
+   border-radius: 10px;
+   /*margin-top: 5px;*/
+   margin-bottom: -1px;
+}
+.my-carousel{
+    margin-bottom: 15px; 
+}
+.my-carousel:hover{
+  opacity: 0.5
+}
+@media (max-width: 767px){
+	.rights{
+		display: none;
+	}
+	.carousel{
+		width: 100% !important;
+		height: 100% !important;
+	}
+	.slide{
+		width: 100% !important;
+		height: 100% !important;
+	}
+}
+.carousel{
+	width: 65%;
+	height: 100%;
+	position: relative;
+}
+.carousel-inner {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+.carousel-inner > .item {
+  display: none;
+  position: relative;
+  -webkit-transition: 0.6s ease-in-out left;
+  -o-transition: 0.6s ease-in-out left;
+  transition: 0.6s ease-in-out left;
+}
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+  line-height: 1;
+}
+@media all and (transform-3d), (-webkit-transform-3d) {
+  .carousel-inner > .item {
+    -webkit-transition: -webkit-transform 0.6s ease-in-out;
+    -moz-transition: -moz-transform 0.6s ease-in-out;
+    -o-transition: -o-transform 0.6s ease-in-out;
+    transition: transform 0.6s ease-in-out;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-perspective: 1000px;
+    -moz-perspective: 1000px;
+    perspective: 1000px;
+  }
+  .carousel-inner > .item.next,
+  .carousel-inner > .item.active.right {
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+    left: 0;
+  }
+  .carousel-inner > .item.prev,
+  .carousel-inner > .item.active.left {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+    left: 0;
+  }
+  .carousel-inner > .item.next.left,
+  .carousel-inner > .item.prev.right,
+  .carousel-inner > .item.active {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    left: 0;
+  }
+}
+.carousel-inner > .active,
+.carousel-inner > .next,
+.carousel-inner > .prev {
+  display: block;
+}
+.carousel-inner > .active {
+  left: 0;
+}
+.carousel-inner > .next,
+.carousel-inner > .prev {
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+.carousel-inner > .next {
+  left: 100%;
+}
+.carousel-inner > .prev {
+  left: -100%;
+}
+.carousel-inner > .next.left,
+.carousel-inner > .prev.right {
+  left: 0;
+}
+.carousel-inner > .active.left {
+  left: -100%;
+}
+.carousel-inner > .active.right {
+  left: 100%;
+}
+.carousel-control {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 15%;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+  font-size: 20px;
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0);
+}
+.carousel-control.left {
+  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.0001) 100%);
+  background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.0001) 100%);
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.0001) 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
+}
+.carousel-control.right {
+  left: auto;
+  right: 0;
+  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.5) 100%);
+  background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.5) 100%);
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.5) 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);
+}
+.carousel-control:hover{
+  outline: 0;
+  color: #fff;
+  text-decoration: none;
+  opacity: 0.9;
+  filter: alpha(opacity=90);
+}
+.carousel-control .icon-prev,
+.carousel-control .icon-next,
+.carousel-control .glyphicon-chevron-left,
+.carousel-control .glyphicon-chevron-right {
+  position: absolute;
+  top: 50%;
+  margin-top: -10px;
+  z-index: 5;
+  display: inline-block;
+}
+.carousel-control .icon-prev,
+.carousel-control .glyphicon-chevron-left {
+  left: 50%;
+  margin-left: -10px;
+}
+.carousel-control .icon-next,
+.carousel-control .glyphicon-chevron-right {
+  right: 50%;
+  margin-right: -10px;
+}
+.carousel-control .icon-prev,
+.carousel-control .icon-next {
+  width: 20px;
+  height: 20px;
+  line-height: 1;
+  font-family: serif;
+}
+.carousel-control .icon-prev:before {
+  content: '\2039';
+}
+.carousel-control .icon-next:before {
+  content: '\203a';
+}
+.carousel-indicators {
+  position: absolute;
+  bottom: -18px;
+  left: 50%;
+  z-index: 15;
+  width: 60%;
+  margin-left: -30%;
+  padding-left: 0;
+  list-style: none;
+  text-align: center;
+}
+.carousel-indicators li {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 7px;
+  text-indent: -999px;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #000 \9;
+  background-color: rgba(0, 0, 0, 0);
+}
+.carousel-indicators .active {
+  margin: 7px;
+  width: 12px;
+  height: 12px;
+  background-color: #fff;
+}
+.carousel-caption {
+  position: absolute;
+  left: 15%;
+  right: 15%;
+  bottom: 20px;
+  z-index: 10;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+.carousel-caption .btn {
+  text-shadow: none;
+}
+@media screen and (min-width: 768px) {
+  .carousel-control .glyphicon-chevron-left,
+  .carousel-control .glyphicon-chevron-right,
+  .carousel-control .icon-prev,
+  .carousel-control .icon-next {
+    width: 30px;
+    height: 30px;
+    margin-top: -10px;
+    font-size: 30px;
+    cursor: url(/images/pointer.cur),auto;
+  }
+  .carousel-control .glyphicon-chevron-left,
+  .carousel-control .icon-prev {
+    margin-left: -10px;
+  }
+  .carousel-control .glyphicon-chevron-right,
+  .carousel-control .icon-next {
+    /* margin-right: -10px; */
+  }
+  .carousel-caption {
+    left: 20%;
+    right: 20%;
+    padding-bottom: 30px;
+  }
+  .carousel-indicators {
+    bottom: -20px;
+  }
+}
+</style>
+<div width="100%"  id="carousel" style="border: 0px; overflow: hidden; border-radius: 10px; margin-bottom: 12px;" scrolling="no">
+		<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="3500" style="float:left">
+      <!-- 轮播（Carousel）指标 -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+        <li data-target="#myCarousel" data-slide-to="3"></li>
+      </ol>
+    <!-- 轮播（Carousel）项目 -->
+    <div class="carousel-inner" id="carousel-pro" style="height: 360px; border-radius: 10px; width: 100%;">
+		<a class="item active" href="javascript:void(0)" target="_blank" style="height: 100%;">
+			<img data-src="/images/banner/banner001.jpg"   style="width: 100%; height: 100%" >
+		</a>
+        <a class="item" href="javascript:void(0)" target="_blank" style="height: 100%;">
+			<img data-src="/images/banner/banner002.jpg"   style="width: 100%; height: 100%" >
+		</a>
+        <a class="item" href="javascript:void(0)" target="_blank" style="height: 100%;">
+			<img data-src="/images/banner/banner003.jpg"   style="width: 100%; height: 100%" >
+		</a>
+        <a class="item" href="javascript:void(0)" target="_blank" style="height: 100%;">
+			<img data-src="/images/banner/banner004.jpg"   style="width: 100%; height: 100%" >
+		</a>
+	</div>
+	  <!-- 轮播（Carousel）导航 -->
+      <a class="left carousel-control" data-target="#myCarousel" href="javascript:void(0);" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true">《</span>
+      </a>
+      <a class="right carousel-control" data-target="#myCarousel" href="javascript:void(0);" role="button" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true">》</span>
+      </a>
+	</div> 
+  <div  class="rights" style="width:28%;height:24%;margin-right:0;margin-left:25px;float:left">
+  	   <!-- 天气插件 -->
+      <div id="iframe">
+        <iframe style="margin-bottom:-35px;margin-top:10px" frameborder="0" scrolling="no" hspace="0" allowtransparency="true" width="387" height="100"  src="//i.tianqi.com/index.php?c=code&id=36&icon=5"></iframe>
+      </div>
+  	   <!-- r热门排行 -->
+  	   <div class="my-carousel">
+         <a href="/hot/" target="_self">
+            <img class="right-siders nofancybox" data-src="/images/hot.png" width="100%"/>
+         </a>
+  	   </div>
+  	   <!-- 时光留影 -->
+  	   <div class="my-carousel">
+         <a href="/photo/" target="_self">
+           <img class="right-siders nofancybox" data-src="/images/time.png"/>
+         </a>
+  	   </div>
+      <!-- 推荐阅读 -->
+      <div class="my-carousel">
+        <a href="/books/" target="_self">
+          <img class="right-siders nofancybox" data-src="/images/read.png"/>
+        </a>
+      </div>
+      <!-- 订阅本站 -->
+      <div class="my-carousel">
+         <a href="/links/" target="_self">
+           <img class="right-siders nofancybox" data-src="/images/subscribe.png"/>
+         </a>
+      </div>
+   </div>
+</div>
+<script>
+var initMainWidth=document.querySelector('.main').offsetWidth;
+adapterHeight(initMainWidth);
+$(window).resize(function() {
+    var newMainWidth=document.querySelector('.main').offsetWidth;
+    adapterHeight(newMainWidth);
+});
+function adapterHeight(width){
+    var initRate=1;
+    if (width<=750){
+      //手机端
+      initRate=0.58;
+      $('#carousel').attr("style","border: 0px; overflow: hidden; border-radius: 10px; margin-bottom: 12px; margin-top: 10px;"); 
+    }else if(width<=917){
+      //移动端--ipad 适配天气
+      initRate=-4;
+    }else if(width<=974){
+      //移动端--ipad
+      initRate=0.32;
+    }else if(width<=1211){
+      //更换天气预报iframe
+      initRate = -3;
+    }else if(width<=1324){
+      //更换天气预报iframe
+      initRate = -2;
+    }else if(width <= 1492){
+      //更换天气预报iframe
+      initRate = -1;
+    }else{
+      initRate=0.21;
+    }
+     switch(initRate){
+      //  无比例 0 默认值 310px 根据实际情况设置
+      case 0:
+        $('#carousel-pro').attr("style","height:310px; border-radius: 10px; width: 100%;");
+        console.log("--> 自适配成功："+width+"px * 310px");
+      break;
+      // 默认比例 1
+      case 1:
+        $('#carousel-pro').attr("style","height:100%; border-radius: 10px; width: 100%;");
+        console.log("--> 自适配成功："+width+"px * 100%");
+      break;
+      case -1:
+        $('#iframe').attr('style','margin-bottom: 10px;');
+        document.getElementById('iframe').innerHTML='<iframe style="margin-bottom:-35px;margin-top: 10px"  frameborder="0" scrolling="no" hspace="0" allowtransparency="true" width="387" height="100" src="//i.tianqi.com/index.php?c=code&id=12&icon=5"></iframe>';
+        var newCarouseHeight=width*0.22;
+        $('#carousel-pro').attr("style","height:"+newCarouseHeight+"px; border-radius: 10px; width: 100%;");
+        console.log("--> 自适配成功："+width+"px * "+newCarouseHeight+"px");
+      break;
+      case -2:
+        $('#iframe').attr('style','margin-bottom: 10px;');
+        document.getElementById('iframe').innerHTML='<iframe style="margin-bottom:10px;"  frameborder="0" scrolling="no" hspace="0" allowtransparency="true" width="387" height="100" src="//i.tianqi.com/index.php?c=code&id=19&icon=5&temp=0&num=1&site=12"></iframe>';
+         var newCarouseHeight=width*0.25;
+        $('#carousel-pro').attr("style","height:"+newCarouseHeight+"px; border-radius: 10px; width: 100%;");
+        console.log("--> 自适配成功："+width+"px * "+newCarouseHeight+"px");
+      break;
+      case -3:
+        $('#iframe').attr('style','margin-bottom: 10px;');
+        document.getElementById('iframe').innerHTML='<iframe style="margin-bottom:10px;"  frameborder="0" scrolling="no" hspace="0" allowtransparency="true" width="387" height="115" src="//i.tianqi.com/index.php?c=code&id=4&icon=5&wind=1&num=1&site=12"></iframe>';
+        var newCarouseHeight=width*0.27;
+        $('#carousel-pro').attr("style","height:"+newCarouseHeight+"px; border-radius: 10px; width: 100%;");
+        console.log("--> 自适配成功："+width+"px * "+newCarouseHeight+"px");
+      break;
+      case -4:
+        $('#iframe').attr('style','margin-bottom: 10px;');
+        document.getElementById('iframe').innerHTML='<iframe style="margin-bottom:10px;"  frameborder="0" scrolling="no" hspace="0" allowtransparency="true" width="387" height="115" src="//i.tianqi.com/index.php?c=code&id=4&icon=5&wind=1&num=1&site=12"></iframe>';
+        var newCarouseHeight=width*0.34;
+        $('#carousel-pro').attr("style","height:"+newCarouseHeight+"px; border-radius: 10px; width: 100%;");
+        console.log("--> 自适配成功："+width+"px * "+newCarouseHeight+"px");
+      break;
+      case 0.32:
+        $('#iframe').attr('style','margin-bottom: 10px;');
+      document.getElementById('iframe').innerHTML='<iframe style="margin-bottom:10px;"  frameborder="0" scrolling="no" hspace="0" allowtransparency="true" width="387" height="100" src="//i.tianqi.com/index.php?c=code&id=19&icon=5&temp=0&num=1&site=12"></iframe>';newCarouseHeight=width*initRate;
+        $('#carousel-pro').attr("style","height:"+newCarouseHeight+"px; border-radius: 10px; width: 100%;");
+        console.log("--> 自适配成功："+width+"px * "+newCarouseHeight+"px");
+      break;
+      default:
+        $('#iframe').attr('style','margin-bottom: 10px;');
+       document.getElementById('iframe').innerHTML='<iframe style="margin-bottom:-35px;margin-top:10px" frameborder="0" scrolling="no" hspace="0" allowtransparency="true" width="387" height="100"  src="//i.tianqi.com/index.php?c=code&id=36&icon=5"></iframe>';newCarouseHeight=width*initRate;
+        $('#carousel-pro').attr("style","height:"+newCarouseHeight+"px; border-radius: 10px; width: 100%;");
+        console.log("--> 自适配成功："+width+"px * "+newCarouseHeight+"px");
+      break;
+    }
+}
+</script>
 ]]></content>
   </entry>
 </search>
