@@ -448,7 +448,7 @@ function adapterHeight(width){
       break;
       default:
         $('#iframe').attr('style','margin-bottom: 10px;');
-       document.getElementById('iframe').innerHTML='<iframe style="margin-bottom:-35px;margin-top:10px" frameborder="0" scrolling="no" hspace="0" allowtransparency="true" width="387" height="100"  src="//i.tianqi.com/index.php?c=code&id=36&icon=5"></iframe>';newCarouseHeight=width*initRate;
+       document.getElementById('iframe').innerHTML='<iframe style="margin-bottom:-35px;margin-top:10px" frameborder="0" scrolling="no" hspace="0" allowtransparency="true" width="387" height="100"  src="//tianqi.2345.com/plugin/widget/index.htm?s=2&z=3&t=1&v=2&d=1&bd=0&k=000000&f=&ltf=009944&htf=cc0000&q=1&e=1&a=1&c=54511&w=300&h=55&align=left"></iframe>';newCarouseHeight=width*initRate;
         $('#carousel-pro').attr("style","height:"+newCarouseHeight+"px; border-radius: 10px; width: 100%;");
         console.log("--> 自适配成功："+width+"px * "+newCarouseHeight+"px");
       break;
